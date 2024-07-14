@@ -2,10 +2,10 @@ def temperature(pressure, precipiation, wind_speed, time):
     return pressure * time**2 + precipiation * time + wind_speed
 
 
-pressure = 1.0
-precipiation = -3.0
-wind_speed = 2.0
-time = 5
+pressure = float(input("Enter atmospheric pressure (in hPa): "))
+precipitation = float(input("Enter precipitation (in mm): "))
+wind_speed = float(input("Enter wind speed (in m/s): "))
+time = float(input("Enter time (in hours): "))
 
 print(
     "At time",
