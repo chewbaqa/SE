@@ -1,16 +1,17 @@
-def temperature(pressure, precipiation, wind_speed, time):
-    return pressure * time**2 + precipiation * time + wind_speed
+import pandas as pd
 
 
-pressure = float(input("Enter atmospheric pressure (in hPa): "))
-precipitation = float(input("Enter precipitation (in mm): "))
-wind_speed = float(input("Enter wind speed (in m/s): "))
+def temperature_model(pressure, precipitation, wind_speed, time):
+    return pressure * time**2 + precipitation * time + wind_speed
+
+
+df = pd.read_csv("1_weather_modelling\weather_data.csv")
 time = float(input("Enter time (in hours): "))
 
-print(
-    "At time",
-    time,
-    "hrs the temperature is :",
-    temperature(pressure, precipiation, wind_speed, time),
-    "°C",
-)
+for index, row in df.iterrows():
+    pressure = row["pressure"]
+    precipitation = row["precipitation"]
+    wind_speed = row["wind_speed"]
+
+    predicted_temperature = temperature_model(pressure, precipitation, wind_speed, time)
+    print(f"At time {time} hrs the temperature is: {predicted_temperature:.2f} °C")
